@@ -1,10 +1,4 @@
-type Coffee = {
-  title: string;
-  description: string;
-  ingredients?: string[] | null;
-  image: string;
-  id: number;
-};
+import type { Coffee } from '.././types/coffee';
 
 export const Card = (props: Coffee) => {
   return (

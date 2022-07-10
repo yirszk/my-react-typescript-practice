@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Card } from './component/Card';
+import type { Coffee } from './types/coffee';
 import axios from 'axios';
-
-type Coffee = {
-  title: string;
-  description: string;
-  ingredients?: string[] | null;
-  image: string;
-  id: number;
-};
 
 const App = () => {
   const [coffees, setCoffees] = useState<Coffee[]>([]);
