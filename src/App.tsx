@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import axios from 'axios';
 
-function App() {
+type Coffee = {
+  title: string;
+  description: string;
+  ingredients?: string[] | null;
+  image: string;
+  id: number;
+};
+
+const App = () => {
+  const [coffees, setCoffees] = useState<Coffee[]>([]);
+
+  useEffect(() => {
+    const getCoffee = async () => {
+      const res = await axios.get<Coffee[]>('https://api.sampleapis.com/coffee/hot');
+      console.log(res.data);
+      // console.log('getCoffeeが実行されました');
+      setCoffees(res.data);
+    };
+    getCoffee();
+    // console.log('useEffectが実行されました');
+  }, []);
+  // console.log({ coffees });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <>
+    //   <div>{coffees.length > 0 && coffees[0].description}</div>
+    // </>
+    // <>
+    //   <div>{coffees[0].description}</div>
+    // </>
+    <>
+      <ul>
+        {coffees.map((coffee) => (
+          <li key={coffee.id}>{coffee.title}</li>
+        ))}
+      </ul>
+      {/* {console.log('renderが実行されました。')} */}
+    </>
   );
-}
+};
 
 export default App;
