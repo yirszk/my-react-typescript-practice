@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { Card } from './component/Card';
 import axios from 'axios';
 
 type Coffee = {
@@ -15,7 +16,9 @@ const App = () => {
 
   useEffect(() => {
     const getCoffee = async () => {
-      const res = await axios.get<Coffee[]>('https://api.sampleapis.com/coffee/hot');
+      const res = await axios.get<Coffee[]>(
+        'https://api.sampleapis.com/coffee/hot'
+      );
       console.log(res.data);
       // console.log('getCoffeeが実行されました');
       setCoffees(res.data);
@@ -33,11 +36,9 @@ const App = () => {
     //   <div>{coffees[0].description}</div>
     // </>
     <>
-      <ul>
-        {coffees.map((coffee) => (
-          <li key={coffee.id}>{coffee.title}</li>
-        ))}
-      </ul>
+      {coffees.map((coffee) => (
+        <Card {...coffee} />
+      ))}
       {/* {console.log('renderが実行されました。')} */}
     </>
   );
