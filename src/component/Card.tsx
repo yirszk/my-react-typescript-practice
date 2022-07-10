@@ -1,6 +1,7 @@
+import type { FC } from 'react';
 import type { Coffee } from '.././types/coffee';
 
-export const Card = (props: Coffee) => {
+export const Card: FC<Coffee> = (props: Coffee) => {
   return (
     <>
       <div className='m-3'>
@@ -17,6 +18,7 @@ export const Card = (props: Coffee) => {
             <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
               {props.title}
             </h5>
+            <div className='text-white text-sm mb-2'>{props.ingredients?.join(', ')}</div>
             <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
               {props.description}
             </p>
