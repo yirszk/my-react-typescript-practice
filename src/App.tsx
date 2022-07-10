@@ -40,6 +40,7 @@ const App = () => {
         <Card {...coffee} />
       ))}
       {/* {console.log('renderが実行されました。')} */}
+      <div className="p-2">test</div>
     </>
   );
 };

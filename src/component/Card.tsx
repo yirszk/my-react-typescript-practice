@@ -9,7 +9,7 @@ type Coffee = {
 export const Card = (props: Coffee) => {
   return (
     <>
-      <div>
+      <div className="my-2">
         <b>{props.title}</b>: {props.description}
         <br />
       </div>
